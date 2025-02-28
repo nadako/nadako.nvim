@@ -202,5 +202,34 @@ require("lazy").setup({
 			opts = {},
 		},
 		"tpope/vim-sleuth",
+		{
+			'stevearc/oil.nvim',
+			dependencies = { { "echasnovski/mini.icons", opts = {} } },
+			lazy = false,
+			config = function()
+				local oil = require("oil")
+				local util = require("oil.util")
+				local actions = require("oil.actions")
+
+				oil.setup()
+
+				vim.keymap.set("n", "-", function()
+					oil.open_float()
+					util.run_after_load(0, function() oil.open_preview() end)
+				end, { desc = "Open parent directory" })
+
+				vim.api.nvim_create_autocmd("User", {
+					group = vim.api.nvim_create_augroup("OilFloatCustom", {}),
+					pattern = "OilEnter",
+					callback = function()
+						if util.is_floating_win() then
+							vim.keymap.set("n", "<Esc>", actions.close.callback, { buffer = true })
+							vim.keymap.set("n", "q", actions.close.callback, { buffer = true })
+						end
+					end,
+				})
+
+			end
+		}
 	}
 })
