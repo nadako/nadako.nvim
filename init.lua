@@ -203,6 +203,17 @@ require("lazy").setup({
 			end
 		},
 		{
+			"folke/snacks.nvim",
+			priority = 1000,
+			lazy = false,
+			keys = {
+				{ "<leader>lg", "<cmd>lua Snacks.lazygit()<CR>", mode = "n", desc = "[L]azy[g]it" },
+			},
+			opts = {
+				lazygit = {}
+			},
+		},
+		{
 			"folke/flash.nvim",
 			event = "VeryLazy",
 			opts = {},
@@ -241,10 +252,10 @@ require("lazy").setup({
 			"rmagatti/auto-session",
 			lazy = false,
 			keys = {
-				{ "<leader>fs", "<cmd>SessionSearch<CR>", desc = "[F]ind [s]ession" },
+				{ "<leader>fs", "<cmd>SessionSearch<CR>", mode = "n", desc = "[F]ind [s]ession" },
 			},
 			opts = {
-				suppressed_dirs = { "c:/Code/", "c:/" },
+				suppressed_dirs = { "C:\\Code", "C:\\" },
 			}
 		}
 	}
