@@ -237,5 +237,15 @@ require("lazy").setup({
 
 			end
 		},
+		{
+			"rmagatti/auto-session",
+			lazy = false,
+			keys = {
+				{ "<leader>fs", "<cmd>SessionSearch<CR>", desc = "[F]ind [s]ession" },
+			},
+			opts = {
+				suppressed_dirs = { "c:/Code/", "c:/" },
+			}
+		}
 	}
 })
