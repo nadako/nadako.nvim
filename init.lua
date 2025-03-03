@@ -87,7 +87,7 @@ require("lazy").setup({
 			build = ":TSUpdate",
 			main = "nvim-treesitter.configs",
 			opts = {
-				ensure_installed = { "c", "lua", "vim", "vimdoc", "markdown", "markdown_inline", "odin" },
+				ensure_installed = { "c", "lua", "vim", "vimdoc", "markdown", "markdown_inline", "odin", "regex" },
 				highlight = { enable = true },
 				indent = { enable = true },
 			}
@@ -256,6 +256,15 @@ require("lazy").setup({
 			},
 			opts = {
 				suppressed_dirs = { "C:\\Code", "C:\\" },
+			}
+		},
+		{
+			"folke/noice.nvim",
+			event = "VeryLazy",
+			opts = {
+			},
+			dependencies = {
+				"MunifTanjim/nui.nvim",
 			}
 		}
 	}
