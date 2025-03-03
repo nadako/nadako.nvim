@@ -21,6 +21,10 @@ vim.opt.scrolloff = 6
 
 vim.opt.breakindent = true
 
+vim.opt.foldlevelstart = 99
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
@@ -90,6 +94,15 @@ require("lazy").setup({
 				ensure_installed = { "c", "lua", "vim", "vimdoc", "markdown", "markdown_inline", "odin", "regex" },
 				highlight = { enable = true },
 				indent = { enable = true },
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						init_selection = "<Enter>",
+						node_incremental = "<Enter>",
+						scope_incremental = false,
+						node_decremental = "<Backspace>",
+					},
+				},
 			}
 		},
 		{
@@ -210,7 +223,7 @@ require("lazy").setup({
 				{ "<leader>lg", "<cmd>lua Snacks.lazygit()<CR>", mode = "n", desc = "[L]azy[g]it" },
 			},
 			opts = {
-				lazygit = {}
+				lazygit = {},
 			},
 		},
 		{
@@ -220,7 +233,7 @@ require("lazy").setup({
 		},
 		"tpope/vim-sleuth",
 		{
-			'stevearc/oil.nvim',
+			"stevearc/oil.nvim",
 			dependencies = { { "echasnovski/mini.icons", opts = {} } },
 			lazy = false,
 			config = function()
@@ -258,14 +271,5 @@ require("lazy").setup({
 				suppressed_dirs = { "C:\\Code", "C:\\" },
 			}
 		},
-		{
-			"folke/noice.nvim",
-			event = "VeryLazy",
-			opts = {
-			},
-			dependencies = {
-				"MunifTanjim/nui.nvim",
-			}
-		}
 	}
 })
